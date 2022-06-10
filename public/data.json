@@ -1,7 +1,61 @@
 {
-   "names": [
-      "name1",
-      "name2",
-      "name3"
+   "template": {
+      "id": 0,
+      "name": "",
+      "img": "",
+      "description": "",
+      "price": 0,
+      "hasDiscount": true,
+      "discountPrice": 0,
+      "available": true
+   },
+   "products": [
+      {
+         "id": 1,
+         "name": "Ноутбук Acer Aspire 5",
+         "img": "https://content1.rozetka.com.ua/goods/images/big/248481392.jpg",
+         "description": "Экран 15.6 IPS (1920x1080) Full HD, матовый / AMD Ryzen 5 5500U (2.1 - 4.0 ГГц) / RAM 8 ГБ / SSD 512 ГБ / AMD Radeon RX 640, 2 ГБ / без ОД / LAN / Wi-Fi / Bluetooth / веб-камера / без ОС / 1.77 кг / серебристый",
+         "price": 23999,
+         "hasDiscount": true,
+         "discountPrice": 22999,
+         "available": true
+      },
+      {
+         "id": 2,
+         "name": "Xiaomi Mi Smart Band 6 Black",
+         "img": "https://content2.rozetka.com.ua/goods/images/big/169051181.jpg",
+         "description": "",
+         "price": 1499,
+         "hasDiscount": true,
+         "discountPrice": 1299,
+         "available": true
+      },
+      {
+         "id": 3,
+         "name": "Мобильный телефон Samsung Galaxy A52",
+         "img": "https://content.rozetka.com.ua/goods/images/big/166279499.jpg",
+         "description": "Экран (6.5, Super AMOLED, 2400x1080)/ Qualcomm Snapdragon 720G (2 x 2.3 ГГц + 6 x 1.8 ГГц)/ основная квадро-камера: 64 Мп + 12 Мп + 5 Мп + 5 Мп, фронтальная 32 Мп/ RAM 4 ГБ/ 128 ГБ встроенной памяти + microSD (до 1 ТБ)/ 3G/ LTE/ GPS/ A-GPS/ ГЛОНАСС/ BDS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 11.0 (One UI)/ 4500 мА*ч",
+         "price": 13299,
+         "hasDiscount": false,
+         "available": false
+      },
+      {
+         "id": 4,
+         "name": "Планшет Apple iPad Air 10.9'",
+         "img": "https://content2.rozetka.com.ua/goods/images/big/259394595.jpg",
+         "description": "Экран 10.9' (2360x1640) MultiTouch / Apple M1 / RAM 8 ГБ / 64 ГБ встроенной памяти / Wi-Fi / Bluetooth 5.0 / основная камера 12 Мп, фронтальная 12 Мп / iPadOS 15 / 461 г / голубой",
+         "price": 29999,
+         "hasDiscount": false,
+         "available": true
+      },
+      {
+         "id": 5,
+         "name": "Мобильный телефон Apple iPhone",
+         "img": "https://content2.rozetka.com.ua/goods/images/big/221205342.jpg",
+         "description": "Экран (6.1, OLED (Super Retina XDR), 2532x1170) / Apple A15 Bionic / двойная основная камера: 12 Мп + 12 Мп, фронтальная камера: 12 Мп / 512 ГБ встроенной памяти / 3G / LTE / 5G / GPS / Nano-SIM, eSIM / iOS 15",
+         "price": 42999,
+         "hasDiscount": false,
+         "available": true
+      }
    ]
 }

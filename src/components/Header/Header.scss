@@ -1,0 +1,36 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.header {
+   @include flex($justify: space-between);
+
+   background-color: $lightCyan;
+   border-bottom: 3px solid $darkCyan;
+   border-top: 3px solid $darkCyan;
+   height: 5rem;
+   margin-top: 4px;
+
+   .links {
+      @include flex();
+   }
+
+   .link {
+      color: $darkCyan;
+      font-size: 1.5rem;
+      text-decoration: none;
+      margin-left: 4rem;
+      transition: all .2s linear;
+      font-weight: 700;
+
+      &:hover {
+         transform: scale(1.1);
+         color: $darkCyanHover;
+      }
+   }
+
+   .home {
+      @extend .link;
+      font-size: 2rem;
+      margin-left: 0;
+   }
+}

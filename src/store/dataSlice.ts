@@ -17,6 +17,11 @@ const initialState: DataState = {
 export const fetchDataAsync = createAsyncThunk(
    "data/fetchData/Async",
    async function (_, { rejectWithValue }) {
+      function sleep(ms: number) {
+         return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      await sleep(3000);
+
       try {
          const responce = await fetch("data.json", {
             method: "GET"
@@ -27,7 +32,7 @@ export const fetchDataAsync = createAsyncThunk(
          }
 
          const data = await responce.json()
-         return data.names;
+         return data.products;
 
       } catch (error) {
          return rejectWithValue((error as Error).message)

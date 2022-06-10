@@ -1,33 +1,48 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './styles/App.scss';
 
-import { useAppDispatch, useAppSelector } from './store/store';
+import { Routes, Route } from "react-router-dom"
+import AppRoutes from './features/Routes';
+
+import Header from './components/Header';
+import Main from './pages/Main';
+import Products from './pages/Products';
+import Sales from './pages/Sales';
+import Cart from './pages/Cart';
+import About from './pages/About';
+
+import { useAppDispatch } from './store/store';
 import { fetchDataAsync } from './store/dataSlice';
-import AsyncStatus from './store/AsyncStatus';
+
 
 function App() {
 
-   const { products, status } = useAppSelector((state) => state.data)
    const dispatch = useAppDispatch()
 
    useEffect(() => {
       dispatch(fetchDataAsync())
    }, [dispatch])
 
-   return (<>
-      <h1>Store</h1>
+   return (
+      <div>
+         <Header />
 
-      {status !== AsyncStatus.Failed ? (
-         <ul className="App">
-            {products.map((product, id) => <li key={id}>{product}</li>)}
-         </ul>
-      ) : (
-         <div>
-            Error!
-         </div>
-      )}
+         <Routes>
+            {/* Header Routes */}
+            <Route path={AppRoutes.Home} element={<Main />}></Route>
+            <Route path={AppRoutes.Products} element={<Products />}></Route>
+            <Route path={AppRoutes.Sales} element={<Sales />}></Route>
+            <Route path={AppRoutes.Cart} element={<Cart />}></Route>
 
-   </>);
+            {/* Footer Routes */}
+            <Route path={AppRoutes.About} element={<About />}></Route>
+
+            {/* others... */}
+
+
+         </Routes>
+      </div>
+   );
 }
 
 export default App;
