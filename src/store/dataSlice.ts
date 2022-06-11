@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStatus from "./AsyncStatus";
+import IProduct from "../models/IProduct"
 
 // initial state
 export interface DataState {
-   products: String[],
+   products: IProduct[],
    status: AsyncStatus
 }
 
@@ -17,10 +18,10 @@ const initialState: DataState = {
 export const fetchDataAsync = createAsyncThunk(
    "data/fetchData/Async",
    async function (_, { rejectWithValue }) {
-      function sleep(ms: number) {
-         return new Promise(resolve => setTimeout(resolve, ms));
-      }
-      await sleep(3000);
+
+      // create little sleep to show loading on the page 
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      // -----------------------------------------------
 
       try {
          const responce = await fetch("data.json", {
@@ -31,7 +32,7 @@ export const fetchDataAsync = createAsyncThunk(
             return new Error("Failed fetching data")
          }
 
-         const data = await responce.json()
+         const data = await (responce.json() as Promise<{ products: IProduct[] }>)
          return data.products;
 
       } catch (error) {
@@ -51,7 +52,7 @@ const dataSlice = createSlice({
             state.status = AsyncStatus.Loading;
          })
          .addCase(fetchDataAsync.fulfilled, (state, action) => {
-            state.products = action.payload;
+            state.products = action.payload as IProduct[];
             state.status = AsyncStatus.Idle;
          })
          .addCase(fetchDataAsync.rejected, (state) => {

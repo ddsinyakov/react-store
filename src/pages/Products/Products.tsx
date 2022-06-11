@@ -10,7 +10,7 @@ export default function Products() {
 
    return (
       <div>
-         <ProductsList products={products as []} status={status} />
+         <ProductsList products={products} status={status} />
       </div>
    );
 }
