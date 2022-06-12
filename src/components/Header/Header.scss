@@ -5,10 +5,8 @@
    @include flex($justify: space-between);
 
    background-color: $lightCyan;
-   border-bottom: 3px solid $darkCyan;
-   border-top: 3px solid $darkCyan;
+   border-bottom: $borderDark;
    height: 5rem;
-   margin-top: 4px;
 
    .links {
       @include flex();

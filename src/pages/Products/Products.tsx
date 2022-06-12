@@ -2,7 +2,7 @@ import React from 'react'
 import "./Products.scss"
 
 import { useAppSelector } from '../../store/store';
-import ProductsList from './ProductsList';
+import ProductsList from '../../components/ProductList';
 
 export default function Products() {
 

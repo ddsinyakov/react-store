@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import "./variables";
+
 
 *,
 *::after,
@@ -6,6 +8,11 @@
    margin: 0;
    padding: 0;
    font-size: 16px;
+   box-sizing: border-box;
+}
+
+body, html, #root {
+   height: 100%;
 }
 
 body {
@@ -14,9 +21,27 @@ body {
 
 .container {
    padding: 0 10rem;
+   
+   @media (max-width: 1250px) {
+      padding: 0 5rem;
+   }
+
+   @media (max-width: 900px) {
+      padding: 0 1rem;
+   }
+
+   &.mg {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+   }
 }
 
 h2 {
    text-align: center;
-   font-size: 2remW;
+   font-size: 2rem;
+}
+
+.content {
+   min-height: 100%;
+   margin-bottom: -1 * $footerHeight;
 }

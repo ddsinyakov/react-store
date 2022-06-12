@@ -1,6 +1,18 @@
 
+// colors
 $darkCyan: #1EA494;
 $darkCyanHover: darken($darkCyan, 20%);
 
 $lightCyan: #D1EEEC;
 $lightCyanHover: darken($lightCyan, 20%);
+
+$font: black;
+$discountPrice: rgb(192, 14, 14);
+
+$grey: rgb(167, 167, 167);
+
+// others
+$footerHeight: 3rem;
+$borderDark: 3px solid $darkCyan;
+$borderLight: 3px solid $lightCyan;
+$borderThin: 1px solid $grey;

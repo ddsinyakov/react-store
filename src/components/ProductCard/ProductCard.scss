@@ -1,0 +1,58 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.productItem {
+   @include flex($direction: column);
+   margin: 0 1rem 2rem;
+   border: $borderThin;
+   padding: 1rem;
+
+   .prodImg {
+      position: relative;
+      display: block;
+      height: 10rem;
+      width: 100%;
+
+      img {
+         @include positionCenter();
+
+         max-height: 8rem;
+         margin-bottom: 2rem;
+      }
+   }
+
+   .link {
+      text-decoration: none;
+      display: block;
+      color: $font;
+      height: 2rem;
+      margin-bottom: 1rem;
+   }
+
+   %prices {
+      width: 100%;
+      height: 1em;
+   }
+
+   .actualPrice {
+      @extend %prices;
+      text-decoration: line-through;
+      color: $grey;
+   }
+
+   .price {
+      @extend %prices;
+      margin: .5rem 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+
+      &.discount {
+         color: $discountPrice;
+      }
+   }
+
+   .available {
+      @extend %prices;
+      font-size: .8rem;
+   }
+}
