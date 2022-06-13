@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 // redux 
 import { useAppDispatch } from './store/store';
 import { fetchDataAsync } from './store/dataSlice';
+import ProductItem from './pages/ProductItem';
 
 
 function App() {
@@ -43,6 +44,10 @@ function App() {
 
                {/* Footer Routes */}
                <Route path={AppRoutes.About} element={<About />}></Route>
+
+               {/* Items */}
+               <Route path={AppRoutes.ItemTemplate} element={<ProductItem />} />
+
             </Routes>
          </div>
 

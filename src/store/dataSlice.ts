@@ -20,11 +20,11 @@ export const fetchDataAsync = createAsyncThunk(
    async function (_, { rejectWithValue }) {
 
       // create little sleep to show loading on the page 
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
       // -----------------------------------------------
 
       try {
-         const responce = await fetch("data.json", {
+         const responce = await fetch("http://localhost:3000/data.json", {
             method: "GET"
          });
 

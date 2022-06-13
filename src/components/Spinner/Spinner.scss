@@ -1,0 +1,24 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+@keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+}
+
+.spinnerContainer {
+   padding-top: 4rem;
+   @include flex($direction: column);
+
+   .spinner {
+      width: 5rem;
+      height: 5rem;
+
+      border: .5rem solid $grey;
+      border-top: .5rem solid $darkCyan;
+      border-radius: 5rem;
+
+      animation: spin 1s linear infinite;
+   }
+}
+

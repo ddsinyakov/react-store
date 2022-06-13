@@ -1,0 +1,92 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.product {
+   h2 {
+      text-align: left;
+      margin-bottom: 2rem;
+   }
+
+   .mainData {
+      @include grid(2);
+      grid-gap: 1rem;
+
+      @media (max-width: 700px) {
+         @include grid(1);
+      }
+      
+      .imgContainer {
+         position: relative;
+         aspect-ratio: 1/1;
+         border: $borderThin;
+         border-radius: 1rem;
+   
+         img{
+            max-width: 90%;
+            max-height: 90%;
+            @include positionCenter();
+         }
+      }
+
+      section{
+         padding: .5rem;
+         border: $borderThin;
+         border-radius: .5rem;
+         margin-bottom: 1rem;
+      }
+
+      .available {
+         display: inline-block;
+         
+         color: green;
+         font-weight: 700;
+
+         &.not {
+            color: $grey;
+         }
+      }
+
+      .priceData {
+         padding: 1rem;
+
+         button {
+            width: 100%;
+            padding: .5rem;
+            border: $borderDark;
+            background-color: $lightCyan;
+            border-radius: .5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .2s linear;
+
+            &:hover {
+               background-color: darken($color: $lightCyan, $amount: 5%);
+            }
+         }
+      }
+
+      .price {
+         display: flex;
+         font-size: 2rem;
+         font-weight: 700;
+         margin-bottom: 1rem;
+
+         &.discount {
+            color: $discountPrice;
+         }
+      }
+
+      .actualPrice {
+         color: $grey;
+         text-decoration: line-through;
+         margin-left: 1rem;
+      }
+
+      
+
+      .description {
+         padding: 1rem;
+      }
+   }
+}

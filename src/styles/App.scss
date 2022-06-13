@@ -31,8 +31,8 @@ body {
    }
 
    &.mg {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
    }
 }
 
@@ -44,4 +44,5 @@ h2 {
 .content {
    min-height: 100%;
    margin-bottom: -1 * $footerHeight;
+   padding-bottom: $footerHeight;
 }

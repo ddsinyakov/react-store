@@ -11,7 +11,7 @@ interface IProductCardProps {
 
 export default function ProductCard({ product }: IProductCardProps) {
 
-   const link = AppRoutes.Products.toString();
+   const link = AppRoutes.ItemBase + product.id;
    return (
       <div className='productItem'>
          <Link to={link} className="prodImg">
@@ -31,7 +31,7 @@ export default function ProductCard({ product }: IProductCardProps) {
          </div>
 
          <div className='available'>
-            {!product.available && "Ожидается"}
+            {!product.available && "Отсутсвует"}
          </div>
       </div>
    );

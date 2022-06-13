@@ -4,7 +4,9 @@ enum AppRoutes {
    Products = "/products",
    Sales = "/sales",
    Cart = "/cart",
-   About = "/about"
+   About = "/about",
+   ItemTemplate = "/item/:id",
+   ItemBase = "/item/"
 }
 
 export default AppRoutes;

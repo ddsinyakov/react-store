@@ -4,6 +4,7 @@ import "./ProductList.scss"
 import AsyncStatus from '../../store/AsyncStatus';
 import IProduct from "../../models/IProduct"
 import ProductCard from '../ProductCard';
+import Spinner from '../Spinner';
 
 interface IProductListProps {
    products: IProduct[],
@@ -11,8 +12,6 @@ interface IProductListProps {
 }
 
 export default function ProductsList({ products, status }: IProductListProps) {
-
-
    return (<div className='container mg'>
       {
          status === AsyncStatus.Idle ? (
@@ -22,12 +21,10 @@ export default function ProductsList({ products, status }: IProductListProps) {
                )}
             </div>
          ) : status === AsyncStatus.Loading ? (
-            <div>
-               Loading...
-            </div>
+            <Spinner />
          ) : (
             <div>
-
+               Oops...
             </div>
          )
       }
