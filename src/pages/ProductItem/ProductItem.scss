@@ -49,7 +49,7 @@
       .priceData {
          padding: 1rem;
 
-         button {
+         input[type="button"]  {
             width: 100%;
             padding: .5rem;
             border: $borderDark;
@@ -57,11 +57,11 @@
             border-radius: .5rem;
             font-size: 1.5rem;
             font-weight: 700;
-            cursor: pointer;
             transition: all .2s linear;
-
-            &:hover {
-               background-color: darken($color: $lightCyan, $amount: 5%);
+            
+            &:not(:disabled):hover {
+               background-color: $lightCyanHover;
+               cursor: pointer;
             }
          }
       }
@@ -82,8 +82,6 @@
          text-decoration: line-through;
          margin-left: 1rem;
       }
-
-      
 
       .description {
          padding: 1rem;

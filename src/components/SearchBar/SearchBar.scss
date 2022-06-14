@@ -1,0 +1,48 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.search {
+   %input {
+      background-color: white;
+      border: $borderDark;
+      font-size: 1.5rem;
+      padding: .5rem;
+   }
+
+   input[type="text"] {
+      @extend %input;
+      border-right: none;
+      border-radius: .5rem 0 0 .5rem;
+      padding-right: 0;
+
+      &:focus-visible {
+         outline: none;
+      }
+   }
+
+   button{
+      @extend %input;
+      border-left: none;
+      border-right: none; 
+      cursor: pointer;
+
+      img{
+         height: 1rem;
+      }
+   }
+
+   input[type="button"] {
+      @extend %input;
+      border-left: none;
+      background-color: $lightCyan;
+      border-radius: 0 .5rem .5rem 0;
+      transition: all .2s linear;
+      font-weight: 700;
+
+      &:hover {
+         background-color: $lightCyanHover;
+         cursor: pointer;
+      }
+   }
+}
+

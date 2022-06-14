@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import AsyncStatus from "./AsyncStatus";
 import IProduct from "../models/IProduct"
@@ -6,12 +6,14 @@ import IProduct from "../models/IProduct"
 // initial state
 export interface DataState {
    products: IProduct[],
-   status: AsyncStatus
+   status: AsyncStatus,
+   lookingFor: string
 }
 
 const initialState: DataState = {
    products: [],
-   status: AsyncStatus.Idle
+   status: AsyncStatus.Idle,
+   lookingFor: ""
 }
 
 // async actions 
@@ -45,7 +47,14 @@ export const fetchDataAsync = createAsyncThunk(
 const dataSlice = createSlice({
    name: "data",
    initialState,
-   reducers: {},
+   reducers: {
+      setSearch(state, action: PayloadAction<{ text: string }>) {
+         state.lookingFor = action.payload.text;
+      },
+      clearSearch(state) {
+         state.lookingFor = "";
+      }
+   },
    extraReducers: (builder) => {
       builder
          .addCase(fetchDataAsync.pending, (state) => {
@@ -61,5 +70,9 @@ const dataSlice = createSlice({
    }
 })
 
-//export const { } = dataSlice.actions;
+export const {
+   setSearch,
+   clearSearch
+} = dataSlice.actions;
+
 export default dataSlice.reducer;

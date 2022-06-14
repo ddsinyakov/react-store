@@ -47,14 +47,14 @@ export default function ProductItem() {
                            )}
                         </div>
 
-                        <button>
-                           Купить
-                        </button>
+                        <input type="button" value="Купить" disabled={!product.available} />
                      </section>
 
-                     <section className='description'>
-                        {product.description}
-                     </section>
+                     {product.description && (
+                        <section className='description'>
+                           {product.description}
+                        </section>
+                     )}
                   </div>
                </div>
 

@@ -12,7 +12,7 @@ interface IProductListProps {
 }
 
 export default function ProductsList({ products, status }: IProductListProps) {
-   return (<div className='container mg'>
+   return (<div>
       {
          status === AsyncStatus.Idle ? (
             <div className='productList'>

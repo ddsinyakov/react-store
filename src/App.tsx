@@ -18,6 +18,7 @@ import Footer from './components/Footer';
 import { useAppDispatch } from './store/store';
 import { fetchDataAsync } from './store/dataSlice';
 import ProductItem from './pages/ProductItem';
+import Search from './pages/Search';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 
                {/* Items */}
                <Route path={AppRoutes.ItemTemplate} element={<ProductItem />} />
+               <Route path={AppRoutes.Search} element={<Search />} />
 
             </Routes>
          </div>

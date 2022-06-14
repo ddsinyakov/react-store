@@ -15,16 +15,15 @@
    }
 
    .link {
-      color: $darkCyan;
+      color: $font;
       font-size: 1.5rem;
       text-decoration: none;
-      margin-left: 4rem;
+      margin-left: 2.5rem;
       transition: all .2s linear;
       font-weight: 700;
 
       &:hover {
          transform: scale(1.1);
-         color: $darkCyanHover;
       }
    }
 
