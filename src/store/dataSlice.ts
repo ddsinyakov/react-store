@@ -50,9 +50,6 @@ const dataSlice = createSlice({
    reducers: {
       setSearch(state, action: PayloadAction<{ text: string }>) {
          state.lookingFor = action.payload.text;
-      },
-      clearSearch(state) {
-         state.lookingFor = "";
       }
    },
    extraReducers: (builder) => {
@@ -71,8 +68,7 @@ const dataSlice = createSlice({
 })
 
 export const {
-   setSearch,
-   clearSearch
+   setSearch
 } = dataSlice.actions;
 
 export default dataSlice.reducer;

@@ -20,7 +20,15 @@ export default function Search() {
 
    return (
       <div className='container mg'>
-         <ProductsList products={products} status={status} />
+         {
+            products.length > 0 ? (
+               <ProductsList products={products} status={status} />
+            ) : (
+               <div>
+                  Oops... No results
+               </div>
+            )
+         }
       </div>
    );
 }

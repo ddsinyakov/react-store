@@ -18,3 +18,18 @@
    top: 50%;
    transform: translate(-50%, -50%);
 }
+
+@mixin button($font-size: 1.5rem, $padding: .5rem) {
+   padding: $padding;
+   border: $borderDark;
+   background-color: $lightCyan;
+   border-radius: .5rem;
+   font-size: $font-size;
+   font-weight: 700;
+   transition: all .2s linear;
+   
+   &:not(:disabled):hover {
+      background-color: $lightCyanHover;
+      cursor: pointer;
+   }
+}

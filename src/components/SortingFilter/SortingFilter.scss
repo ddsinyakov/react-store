@@ -1,0 +1,16 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.sortFilters {
+   @include flex($justify: right);
+   margin-bottom: 1rem;
+
+   select {
+      padding: .5rem;
+      border:$borderThin;
+
+      &:focus-visible {
+         outline: none;
+      }
+   }
+}

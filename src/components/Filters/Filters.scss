@@ -1,0 +1,30 @@
+@import "../../styles/_mixins";
+@import "../../styles/_variables";
+
+.filters {
+   border: $borderThin;
+   padding: 0 .5rem;
+   height: auto;
+   
+   > p { text-align: center; }
+   > div {
+      padding: .5rem 0;
+      
+      &:not(:last-child) {
+         border-bottom: $borderThin;
+         margin-bottom: .5rem;
+      }
+   }
+
+   .prices {
+      @include flex();
+      span{ margin: 0 .3rem; }
+      input { width: 33% }
+   }
+
+   .accept { @include flex(); }
+   button {
+      @include button($font-size: 1.2rem, $padding: .5rem 1.5rem);
+   }
+}
+

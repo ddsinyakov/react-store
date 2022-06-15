@@ -1,2 +1,29 @@
 @import "../../styles/_mixins";
 @import "../../styles/_variables";
+
+.productLayout {
+   @include grid($columns: 5);
+   gap: 1rem;
+
+   .list {
+      grid-column-start: 2;
+      grid-column-end: 6;
+   }
+
+   @media (min-width: 1600px) {
+      @include grid($columns: 6);
+
+      .list {
+         grid-column-end: 7;
+      }
+   }
+
+   @media (max-width: 900px) {
+      @include grid($columns: 1);
+
+      .list {
+         grid-column-start: 1;
+         grid-column-end: 1;
+      }
+   }
+}

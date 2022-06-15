@@ -3,7 +3,6 @@
 
 .productItem {
    @include flex($direction: column);
-   margin: 0 1rem 2rem;
    border: $borderThin;
    padding: 1rem;
 

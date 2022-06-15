@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import AppRoutes from '../../features/Routes';
 
 import { useAppDispatch } from '../../store/store';
-import { clearSearch, setSearch } from '../../store/dataSlice';
+import { setSearch } from '../../store/dataSlice';
 
 export default function SearchBar() {
    const navigate = useNavigate();
@@ -14,8 +14,14 @@ export default function SearchBar() {
    const [text, setText] = useState("");
 
    const go = () => {
-      dispatch(setSearch({ text }));
-      navigate(AppRoutes.Search);
+      if (text !== "") {
+         dispatch(setSearch({ text }));
+         navigate(AppRoutes.Search);
+      }
+   }
+
+   const enterGo = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === "Enter") go()
    }
 
    const setInputText = (event: React.FormEvent<HTMLInputElement>) => {
@@ -23,13 +29,13 @@ export default function SearchBar() {
    }
 
    const clearText = () => {
-      dispatch(clearSearch());
       setText("");
+      dispatch(setSearch({ text }));
    }
 
    return (
       <div className='search'>
-         <input type="text" name="" placeholder='...' onChange={setInputText} value={text} />
+         <input type="text" name="" placeholder='...' onChange={setInputText} value={text} onKeyDown={enterGo} />
          <button onClick={clearText}>
             <img src={clear} alt="" />
          </button>

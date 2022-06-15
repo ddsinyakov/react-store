@@ -3,8 +3,9 @@
 
 .productList {
    @include grid($columns: 4);
+   gap: 1rem;
 
-   @media (max-width: 1250px) {
+   @media (max-width: 1300px) {
       @include grid($columns: 3);
    }
 
