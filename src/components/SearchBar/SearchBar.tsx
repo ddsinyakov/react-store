@@ -31,6 +31,7 @@ export default function SearchBar() {
    const clearText = () => {
       setText("");
       dispatch(setSearch({ text }));
+      navigate(AppRoutes.Products);
    }
 
    return (

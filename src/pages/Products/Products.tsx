@@ -7,29 +7,27 @@ import ProductsList from '../../components/ProductList';
 import SortingFilter from "../../components/SortingFilter";
 import Filters from '../../components/Filters';
 import SortingTypes from '../../features/SortingTypes';
-import Product from '../../models/IProduct';
 import Spinner from '../../components/Spinner';
 import AsyncStatus from '../../store/AsyncStatus';
+import { filter, Filter, sort } from '../../features/FilterFunctions';
 
-const sort = (products: Product[], sortType: string): Product[] => {
-   let result = products;
 
-   if (sortType === SortingTypes.ByPriceAscendig) {
-      result = products.sort((prodA, prodB) => prodA.price - prodB.price);
-   } else if (sortType === SortingTypes.ByPriceDescending) {
-      result = products.sort((prodA, prodB) => prodB.price - prodA.price);
-   } else if (sortType === SortingTypes.OnlySales) {
-      result = products.filter((prod) => prod.hasDiscount);
-   }
 
-   return result;
-}
+
+
+// function for filtering products
 
 export default function Products() {
    const [sortType, setSortType] = useState(SortingTypes.Default.toString());
    const { products, status, maxPrice, minPrice } = useAppSelector((state) => state.data);
+
+   // sorting 
    let newProducts = [...products];
    newProducts = sort(newProducts, sortType);
+
+   // filters
+   const [currentFilter, setCurrentFilter] = useState<Filter>(null);
+   newProducts = filter(newProducts, currentFilter);
 
    return (
       <div className='container mg productLayout'>
@@ -44,11 +42,11 @@ export default function Products() {
             </div>) : status === AsyncStatus.Idle ? (<>
 
                <div>
-                  < Filters products={newProducts} status={status} max={maxPrice} min={minPrice} />
+                  <Filters products={newProducts} max={maxPrice} min={minPrice} setFilters={setCurrentFilter} />
                </div>
 
                <div className='list'>
-                  <ProductsList products={newProducts} status={status} />
+                  <ProductsList products={newProducts} />
                </div>
 
             </>) : (

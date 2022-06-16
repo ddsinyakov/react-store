@@ -3,6 +3,8 @@ import "./Search.scss"
 
 import { useAppSelector } from '../../store/store';
 import ProductsList from '../../components/ProductList';
+import AsyncStatus from '../../store/AsyncStatus';
+import Spinner from '../../components/Spinner';
 
 export default function Search() {
    const { products, status } = useAppSelector((state) => {
@@ -21,14 +23,22 @@ export default function Search() {
    return (
       <div className='container mg'>
          {
-            products.length > 0 ? (
-               <ProductsList products={products} status={status} />
-            ) : (
+            status === AsyncStatus.Loading ? (
+               <Spinner />
+            ) : status === AsyncStatus.Idle ? (<>{
+               products.length > 0 ? (
+                  <ProductsList products={products} />
+               ) : (
+                  <div>
+                     Oops... No results
+                  </div>
+               )
+            }</>) : (
                <div>
-                  Oops... No results
+                  Oops...
                </div>
             )
          }
-      </div>
+      </div >
    );
 }

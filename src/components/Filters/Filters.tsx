@@ -1,75 +1,77 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
+import { Filter } from '../../features/FilterFunctions';
 import Product from '../../models/IProduct';
-import AsyncStatus from '../../store/AsyncStatus';
+
 import "./Filters.scss"
-import PriceFilter, { IPriceFilterRef } from './_PriceFilter';
+import { IManufFilterRef, ManufFilter } from './_ManufFilter';
+import { PriceFilter, IPriceFilterRef } from './_PriceFilter';
 
 interface IFilterProps {
+   setFilters?: React.Dispatch<React.SetStateAction<Filter>>
    products: Product[]
-   status: AsyncStatus,
-   max: number,
+   max: number
    min: number
 }
 
-export default function Filters({ products, status, max, min }: IFilterProps) {
-   // const [minPrice, setMinPrice] = useState(min.toString());
-   // const [maxPrice, setMaxPrice] = useState(max.toString());
-   // const [error, setError] = useState(false);
-
-   // const handleInputChange = (
-   //    event: React.ChangeEvent<HTMLInputElement>,
-   //    stateHandler: React.Dispatch<React.SetStateAction<string>>) => {
-   //    stateHandler(event.currentTarget.value);
-
-   //    if (!Number(event.currentTarget.value))
-   //       setError(true);
-   //    else if (error)
-   //       setError(false)
-   // }
-
+export default function Filters({ setFilters, products, max, min }: IFilterProps) {
    const priceRef = useRef<IPriceFilterRef>(null);
+   const manufRef = useRef<IManufFilterRef>(null);
 
-   const manufacturers = Array.from(
-      new Set(products.map(prod => prod.manufacturer))
-   );
+   const acceptFilters = () => {
+      if (setFilters) {
+         let filter: Filter = {}
+         let isFilter = false;
 
-   const show = () => {
-      console.log(priceRef.current?.getPrice());
+         // adding price restrictions to the filter
+         if (priceRef.current) {
+            const { min, max, valid } = priceRef.current.getPrice();
+            if (valid) {
+               isFilter = true;
+               filter.priceBorder = {
+                  maxPrice: Number(max),
+                  minPrice: Number(min)
+               }
+            }
+         }
+
+         // adding manufacturers to the filter
+         if (manufRef.current) {
+            const manufs = manufRef.current.getManufs();
+            if (manufs.length > 0) {
+               isFilter = true;
+               filter.manufacturers = manufs;
+            }
+         }
+
+         if (isFilter) setFilters(filter);
+      }
    }
 
-   console.log("filters")
+   // clearing all filters
+   const clearFilters = () => {
+      priceRef.current?.clearPrice();
+      manufRef.current?.clearManufs();
+      if (setFilters) { setFilters(null); }
+   }
+
    return (
       <div className='filters'>
 
          <div className='accept'>
-            <button onClick={show}>
+            <button onClick={acceptFilters}>
                Применить
             </button>
 
-            <button>
+            <button onClick={clearFilters}>
                Сбросить
             </button>
          </div>
 
          <p>Цена</p>
          <PriceFilter ref={priceRef} min={min} max={max} />
-         {/* <div className={error ? 'prices error' : 'prices'}>
-            <input type="text" value={minPrice} onChange={(event) => handleInputChange(event, setMinPrice)} />
-            <span> — </span>
-            <input type="text" value={maxPrice} onChange={(event) => handleInputChange(event, setMaxPrice)} />
-         </div> */}
 
          <p>Производитель</p>
-         <div className="manufacturer">
-            {
-               manufacturers.map((item, i) => (
-                  <div key={i}>
-                     <input type="checkbox" value={item} />
-                     <label>{item}</label>
-                  </div>
-               ))
-            }
-         </div>
+         <ManufFilter ref={manufRef} products={products} />
       </div >
    );
 }

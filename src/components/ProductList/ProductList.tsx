@@ -1,16 +1,14 @@
 import React from 'react'
 import "./ProductList.scss"
 
-import AsyncStatus from '../../store/AsyncStatus';
 import IProduct from "../../models/IProduct"
 import ProductCard from '../ProductCard';
 
 interface IProductListProps {
-   products: IProduct[],
-   status: AsyncStatus
+   products: IProduct[]
 }
 
-export default function ProductsList({ products, status }: IProductListProps) {
+export default function ProductsList({ products }: IProductListProps) {
    return (
       <div className='productList'>
          {products.map((item) =>
