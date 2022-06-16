@@ -7,7 +7,6 @@
 }
 
 .spinnerContainer {
-   padding-top: 4rem;
    @include flex($direction: column);
 
    .spinner {

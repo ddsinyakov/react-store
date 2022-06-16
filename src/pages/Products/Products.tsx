@@ -8,6 +8,8 @@ import SortingFilter from "../../components/SortingFilter";
 import Filters from '../../components/Filters';
 import SortingTypes from '../../features/SortingTypes';
 import Product from '../../models/IProduct';
+import Spinner from '../../components/Spinner';
+import AsyncStatus from '../../store/AsyncStatus';
 
 const sort = (products: Product[], sortType: string): Product[] => {
    let result = products;
@@ -25,10 +27,9 @@ const sort = (products: Product[], sortType: string): Product[] => {
 
 export default function Products() {
    const [sortType, setSortType] = useState(SortingTypes.Default.toString());
-   const { products, status } = useAppSelector((state) => state.data);
+   const { products, status, maxPrice, minPrice } = useAppSelector((state) => state.data);
    let newProducts = [...products];
    newProducts = sort(newProducts, sortType);
-
 
    return (
       <div className='container mg productLayout'>
@@ -37,13 +38,26 @@ export default function Products() {
             <SortingFilter setSortType={setSortType} />
          </div>
 
-         <div>
-            <Filters />
-         </div>
+         {
+            status === AsyncStatus.Loading ? (<div className='all'>
+               <Spinner />
+            </div>) : status === AsyncStatus.Idle ? (<>
 
-         <div className='list'>
-            <ProductsList products={newProducts} status={status} />
-         </div>
+               <div>
+                  < Filters products={newProducts} status={status} max={maxPrice} min={minPrice} />
+               </div>
+
+               <div className='list'>
+                  <ProductsList products={newProducts} status={status} />
+               </div>
+
+            </>) : (
+               <div>
+                  Oops...
+               </div>
+            )
+         }
+
       </div>
    );
 }

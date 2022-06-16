@@ -7,7 +7,8 @@
       "price": 0,
       "hasDiscount": true,
       "discountPrice": 0,
-      "available": true
+      "available": true,
+      "manufacturer": ""
    },
    "products": [
       {
@@ -18,7 +19,8 @@
          "price": 23999,
          "hasDiscount": true,
          "discountPrice": 22999,
-         "available": true
+         "available": true,
+         "manufacturer": "Acer"
       },
       {
          "id": 2,
@@ -28,7 +30,8 @@
          "price": 1499,
          "hasDiscount": true,
          "discountPrice": 1299,
-         "available": true
+         "available": true,
+         "manufacturer": "Xiaomi"
       },
       {
          "id": 3,
@@ -37,7 +40,8 @@
          "description": "Экран (6.5, Super AMOLED, 2400x1080)/ Qualcomm Snapdragon 720G (2 x 2.3 ГГц + 6 x 1.8 ГГц)/ основная квадро-камера: 64 Мп + 12 Мп + 5 Мп + 5 Мп, фронтальная 32 Мп/ RAM 4 ГБ/ 128 ГБ встроенной памяти + microSD (до 1 ТБ)/ 3G/ LTE/ GPS/ A-GPS/ ГЛОНАСС/ BDS/ поддержка 2х SIM-карт (Nano-SIM)/ Android 11.0 (One UI)/ 4500 мА*ч",
          "price": 13299,
          "hasDiscount": false,
-         "available": false
+         "available": false,
+         "manufacturer": "Samsung"
       },
       {
          "id": 4,
@@ -46,7 +50,8 @@
          "description": "Экран 10.9' (2360x1640) MultiTouch / Apple M1 / RAM 8 ГБ / 64 ГБ встроенной памяти / Wi-Fi / Bluetooth 5.0 / основная камера 12 Мп, фронтальная 12 Мп / iPadOS 15 / 461 г / голубой",
          "price": 29999,
          "hasDiscount": false,
-         "available": true
+         "available": true,
+         "manufacturer": "Apple"
       },
       {
          "id": 5,
@@ -55,7 +60,8 @@
          "description": "Экран (6.1, OLED (Super Retina XDR), 2532x1170) / Apple A15 Bionic / двойная основная камера: 12 Мп + 12 Мп, фронтальная камера: 12 Мп / 512 ГБ встроенной памяти / 3G / LTE / 5G / GPS / Nano-SIM, eSIM / iOS 15",
          "price": 42999,
          "hasDiscount": false,
-         "available": true
+         "available": true,
+         "manufacturer": "Apple"
       }
    ]
 }

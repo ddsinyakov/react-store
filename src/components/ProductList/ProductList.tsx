@@ -4,7 +4,6 @@ import "./ProductList.scss"
 import AsyncStatus from '../../store/AsyncStatus';
 import IProduct from "../../models/IProduct"
 import ProductCard from '../ProductCard';
-import Spinner from '../Spinner';
 
 interface IProductListProps {
    products: IProduct[],
@@ -12,21 +11,11 @@ interface IProductListProps {
 }
 
 export default function ProductsList({ products, status }: IProductListProps) {
-   return (<div>
-      {
-         status === AsyncStatus.Idle ? (
-            <div className='productList'>
-               {products.map((item) =>
-                  <ProductCard product={item} key={item.id} />
-               )}
-            </div>
-         ) : status === AsyncStatus.Loading ? (
-            <Spinner />
-         ) : (
-            <div>
-               Oops...
-            </div>
-         )
-      }
-   </div>);
+   return (
+      <div className='productList'>
+         {products.map((item) =>
+            <ProductCard product={item} key={item.id} />
+         )}
+      </div>
+   );
 }

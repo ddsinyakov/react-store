@@ -8,5 +8,6 @@ export default interface Product {
    price: number,
    hasDiscount: boolean,
    discountPrice?: number,
-   available: boolean
+   available: boolean,
+   manufacturer: string
 }

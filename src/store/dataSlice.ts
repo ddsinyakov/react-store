@@ -7,13 +7,17 @@ import IProduct from "../models/IProduct"
 export interface DataState {
    products: IProduct[],
    status: AsyncStatus,
-   lookingFor: string
+   lookingFor: string,
+   maxPrice: number,
+   minPrice: number
 }
 
 const initialState: DataState = {
    products: [],
    status: AsyncStatus.Idle,
-   lookingFor: ""
+   lookingFor: "",
+   maxPrice: 0,
+   minPrice: 0
 }
 
 // async actions 
@@ -60,6 +64,19 @@ const dataSlice = createSlice({
          .addCase(fetchDataAsync.fulfilled, (state, action) => {
             state.products = action.payload as IProduct[];
             state.status = AsyncStatus.Idle;
+
+            let maxPrice = state.products[0]?.price;
+            let minPrice = state.products[0]?.price;
+
+            state.products.forEach((prod) => {
+               if (maxPrice < prod.price)
+                  maxPrice = prod.price;
+               else if (minPrice > prod.price)
+                  minPrice = prod.price;
+            })
+
+            state.maxPrice = maxPrice;
+            state.minPrice = minPrice;
          })
          .addCase(fetchDataAsync.rejected, (state) => {
             state.status = AsyncStatus.Failed;

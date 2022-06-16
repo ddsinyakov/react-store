@@ -16,15 +16,42 @@
       }
    }
 
+   .accept { 
+      @include flex($direction: column);
+      padding-right: 2rem;
+      padding-left: 2rem;
+   }
+   button {
+      @include button($font-size: 1.2rem);
+      width: 100%;
+      &:not(:last-child) {
+         margin-bottom: .5rem;
+      }
+   }
+
    .prices {
       @include flex();
       span{ margin: 0 .3rem; }
       input { width: 33% }
+
+      input[type="text"] {
+         padding: .1rem .5rem;
+         border-radius: .3rem;
+         border: $borderThin;
+
+         &:focus-visible {
+            outline: none;
+         }
+      }
+
+      &.error input[type="text"]{
+         border: 1px solid red;
+      }
    }
 
-   .accept { @include flex(); }
-   button {
-      @include button($font-size: 1.2rem, $padding: .5rem 1.5rem);
+   .manufacturer {
+      padding-left: 1rem;
+      label { margin-left: .5rem; }
    }
 }
 
