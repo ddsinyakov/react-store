@@ -35,7 +35,8 @@ export const ManufFilter = React.forwardRef<IManufFilterRef, IManufFilterProps>(
       if (event.target.checked) {
          newManuf = [...manufs, event.target.value];
       } else {
-         newManuf = [...manufs].splice(manufs.indexOf(event.target.value), 1);
+         newManuf = [...manufs];
+         newManuf.splice(manufs.indexOf(event.target.value), 1);
       }
       setManufs(newManuf);
    }

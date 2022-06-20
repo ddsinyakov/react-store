@@ -42,7 +42,7 @@ export default function Products() {
             </div>) : status === AsyncStatus.Idle ? (<>
 
                <div>
-                  <Filters products={newProducts} max={maxPrice} min={minPrice} setFilters={setCurrentFilter} />
+                  <Filters products={products} max={maxPrice} min={minPrice} setFilters={setCurrentFilter} />
                </div>
 
                <div className='list'>
